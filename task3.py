@@ -18,3 +18,5 @@ print("Четные элементы списка:")
 for num in my_list:
     if num %2 == 0:
         print(num)
+sub_list=my_list[1::2]
+print("Четные элементы списка через срезы",sub_list)
