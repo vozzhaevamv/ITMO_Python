@@ -10,9 +10,9 @@ elif birth_month <= 9:
 elif birth_month <= 12:
     print('Четвертый квартал')
 if (birth_year % 4 == 0 and birth_year % 100 != 0) or birth_year % 400 == 0:
-   print('Год вашего рождения весокосный') 
+   print('Год вашего рождения високосный') 
 else:
-    print('Год вашего рождение не весокосный')
+    print('Год вашего рождение не високосный')
 this_day = int(input('Введите текущий день:'))
 this_month = int(input('Введите текущий месяц (число от 1 до 12):'))
 this_year = int(input('Введите текущий год:'))
