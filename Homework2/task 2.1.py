@@ -1,7 +1,7 @@
 list1 = [1,2,3,4,5]
 list2 = ['a','b','c','d','e']
-list_all=[]
-for i in list1:
-    list_all.append (list1[i-1])
-    list_all.append (list2[i-1])
+list_all=[] #Создаем пустой список для объединения элементов 
+for i in range(len(list1)): #Проходим по индексам элементов в первом списке
+    list_all.append(list1[i]) #Добавляем элемент из первого списка
+    list_all.append(list2[i]) #Добавляем элемент из второго списка
 print(list_all)
