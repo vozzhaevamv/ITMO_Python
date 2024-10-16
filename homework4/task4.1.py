@@ -15,7 +15,7 @@ file_way2 = r"C:\Users\Masha\Desktop\textnew.txt"
 file2 = open(file_way2, "w", encoding="utf-8")
 file2.write("Электронные почты:")
 for email in emails:
-        file2.write(email_pattern)
+        file2.write("".join(emails))
 for number in numbers:
         file2.write(numbers)
 file2.close()
