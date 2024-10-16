@@ -18,5 +18,8 @@ for email in emails:
         file2.write(email_pattern)
 for number in numbers:
         file2.write(numbers)
-
-print( file_way2)
+file2.close()
+file2 = open(file_way2, "r", encoding="utf-8")
+content2 = file2.read()
+file2.close()
+print("Файл считан:", content2)
