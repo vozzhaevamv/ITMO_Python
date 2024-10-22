@@ -5,7 +5,7 @@ class LearningCourse:
         self.cost = cost  
 
     def details(self):
-        return f"Курс: {self.name}, Продолжительность: {self.length} часов, Стоимость: {self.cost:.2f}"
+        return f"Курс: {self.name}, Продолжительность: {self.length} часов, Стоимость: {self.cost}"
 
 class Transport:
     def __init__(self, brand, model, year):
