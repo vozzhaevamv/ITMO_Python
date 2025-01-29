@@ -1,25 +1,36 @@
-import re
-file_way = r"C:\Users\Masha\Desktop\text.txt"
-file = open(file_way, "r", encoding="utf-8")
-content = file.read()
-file.close()
-print("Файл считан:", content)
-email_pattern = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
-emails = re.findall(email_pattern, content)
-print("Электронные почты:", emails)
-numbers = r'(\+?\d{1,3}[-.\s]?)?\(?\d{1,4}?\)?[-.\s]?\d{3}[-.\s]?\d{4}'
-numbers1 = re.findall(numbers, content)
-print ("Номера телефонов:", numbers1)
-file.close()
-file_way2 = r"C:\Users\Masha\Desktop\textnew.txt"
-file2 = open(file_way2, "w", encoding="utf-8")
-file2.write("Электронные почты:")
-for email in emails:
-        file2.write("".join(emails))
-for number in numbers:
-        file2.write(numbers)
-file2.close()
-file2 = open(file_way2, "r", encoding="utf-8")
-content2 = file2.read()
-file2.close()
-print("Файл считан:", content2)
+# Определим допустимые символы для email и проверку на номера телефонов
+email_chars = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789._%+-@")
+phone_chars = set("0123456789()+- ")
+
+emails = set()
+phones = set()
+
+input_file = 'input.txt'
+output_file = 'output.txt'
+
+with open(input_file, 'r', encoding='utf-8') as file:
+    content = file.read().splitlines()
+    
+    for line in content:
+        words = line.split()
+        for word in words:
+            # Проверка, является ли слово электронной почтой
+            if '@' in word and all(c in email_chars for c in word) and word.count('@') == 1:
+                at_index = word.index('@')
+                if '.' in word[at_index:]:
+                    emails.add(word)
+
+            # Проверка, является ли слово номером телефона
+            if all(c in phone_chars for c in word):
+                cleaned_word = ''.join(c for c in word if c.isdigit())
+                if len(cleaned_word) in [10, 11]:  # Проверяем, что длина 10 или 11
+                    phones.add(cleaned_word)
+
+# Запись результатов в файл
+with open(output_file, 'w', encoding='utf-8') as file:
+    file.write("Найденные электронные почты:\n")
+    for email in emails:
+        file.write(email + '\n')
+    file.write("\nНайденные номера телефонов:\n")
+    for phone in phones:
+        file.write(phone + '\n')
